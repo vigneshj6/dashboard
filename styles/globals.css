@@ -105,3 +105,8 @@ a {
     color-scheme: dark;
   }
 }
+iframe {
+  width: 100%; /* Set the width of the iframe to fill its container */
+  height: 100%; /* Set the height of the iframe to fill its container */
+  border: none; /* Remove iframe border */
+}

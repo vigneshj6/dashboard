@@ -1,3 +1,4 @@
+
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import micromatch from "micromatch";
@@ -7,14 +8,16 @@ import { supabase } from "@/modules/common/server/supabase";
 const unAuthenticatedApiRoutes = [
   "/api/auth/signin",
   "/api/auth/signup",
-  "/api/invites/*/accept",
-  "/api/invites/*/decline",
+  "/api/invites//accept",
+  "/api/invites//decline",
+  "/api/hello"
 ];
 
 export async function middleware(req: NextRequest) {
-  const { headers, nextUrl } = req;
+   const { headers, nextUrl } = req;
   const { pathname } = nextUrl;
 
+  /*
   // Bypass routes that don't require authentication
   if (micromatch.isMatch(pathname, unAuthenticatedApiRoutes)) {
     return NextResponse.next();
@@ -36,6 +39,7 @@ export async function middleware(req: NextRequest) {
   }
 
   return NextResponse.next();
+  */
 }
 
 // Limit the middleware to specific '/api/*' routes
