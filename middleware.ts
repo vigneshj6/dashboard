@@ -16,6 +16,7 @@ const unAuthenticatedApiRoutes = [
 export async function middleware(req: NextRequest) {
    const { headers, nextUrl } = req;
   const { pathname } = nextUrl;
+  console.dir(req);
 
   /*
   // Bypass routes that don't require authentication

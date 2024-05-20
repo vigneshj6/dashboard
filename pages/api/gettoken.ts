@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { error } from 'console';
 import type { NextApiRequest, NextApiResponse } from 'next'
+import Config from './config.json'
 
 type Data = {
   token: string
@@ -11,14 +12,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-    const loginResult = await axios.post("http://localhost:8088/api/v1/security/login",{
+    const loginResult = await axios.post(Config.SUPERSET_URL+"/api/v1/security/login",{
         "password": "admin",
         "provider": "db",
         "refresh": true,
         "username": "admin"
     });
     console.log(loginResult.data);
-    const guestTokenResult = await axios.post("http://localhost:8088/api/v1/security/guest_token",
+    const guestTokenResult = await axios.post(Config.SUPERSET_URL+"/api/v1/security/guest_token",
     {
         "user": {
           "username": "admin",
@@ -29,7 +30,7 @@ export default async function handler(
         ],
         "resources": [{
           "type": "dashboard",
-          "id": "11"
+          "id": Config.DASHBOARD_NUMBER
         }]
     }
     ,
